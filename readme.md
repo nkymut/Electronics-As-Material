@@ -51,6 +51,7 @@ A microcontroller might have a number of input pins connected to ADC for you to 
 The ADC breaks down a logic level into smaller steps depending on its resolution (measured in bits). For instance, a 10-bit ADC breaks down a logic level to 1024 steps (2 to the power of 10). The Arduino Uno R3 provides 10-bit ADCs operating on a 5V logic level. (See figure above)
 
 e.g. 
+
 | input voltage | `analogRead` value |
 |---|---|
 | 0.0V | 0 |
@@ -83,7 +84,9 @@ This circuit follows the following schematic. Essentially, when the button is op
 
 Use the following [example code](https://app.arduino.cc/sketches/8a19202f-7618-4c98-a974-431bd04c8f7d?view-mode=preview) to read this circuit. The digital pin used in this example is `7`.
 
+
 <iframe src=https://app.arduino.cc/sketches/8a19202f-7618-4c98-a974-431bd04c8f7d?view-mode=preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
 
 <br>
 
@@ -102,7 +105,9 @@ e.g. `pinMode(7, INPUT_PULLUP)`.
 
 Use the following [example code](https://app.arduino.cc/sketches/c368d376-5edb-4db9-a715-c7853ca70dc8?view-mode=preview) to read this circuit. The digital pin used in this example is `7`.
 
+
 <iframe src="https://app.arduino.cc/sketches/c368d376-5edb-4db9-a715-c7853ca70dc8?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
 
 **Avoid using pins `0` and `1` for digital reading as those are also used for Serial communication**
 
@@ -174,10 +179,11 @@ Follow the diagram above to build a capacitive touch sensing circuit. Connect a 
 
 Use the following [example code](https://app.arduino.cc/sketches/64bc9378-c446-4391-9a9d-1a90508344e3?view-mode=preview) for this circuit. In order to upload this code example, you will need to install the CapacitiveSensor library. In the Arduino IDE, go to Sketch > Include Library > Manage Libraries. Search for "CapacitiveSensor" by Paul Bagder, Paul Stoffregen, and install it.
 
+
 <iframe src=https://app.arduino.cc/sketches/64bc9378-c446-4391-9a9d-1a90508344e3?view-mode=preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
 
-How does capacitive touch sensing work? Capacitors are two conductive plates separated by an insulator. A capacitive touch sensor is typically one plate of that capacitor that is charged up; with the other "plate" being the earth (the literal ground). Humans, through our skin, extend the ground and changes the charging rate of the capacitor. By observing the rate at which a conductive plate charges up, a microcontroller can sense touch. More information [here](https://www.bareconductive.com/news/what-is-capacitive-sensing/).
+How does capacitive touch sensing work? Capacitors are two conductive plates separated by an insulator. A capacitive touch sensor is typically one plate of that capacitor that is charged up; with the other "plate" being the earth (the literal ground). Humans, through our skin, extend the ground and changes the charging rate of the capacitor. By observing the rate at which a conductive plate charges up, a microcontroller can sense touch. More information [here](https://www.tacterion.com/wiki/capacitive-sensing).
 
 
 <br>
@@ -196,7 +202,9 @@ Let's look at buttons/sensors that use `digitalRead` first. Since `digitalRead`'
 
 [Example code here](https://app.arduino.cc/sketches/5b4dcace-aa51-4988-851d-0f8f71e138c2?view-mode=preview).
 
+
 <iframe src=https://app.arduino.cc/sketches/5b4dcace-aa51-4988-851d-0f8f71e138c2?view-mode=preview?embed style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
 
 For this code, we introduce a new variable `buttonValPrev`. On top of reading and storing the value of the button from `digitalRead`, we also keep track of its last value (from the previous update loop).
 
