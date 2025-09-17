@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Serial Ports</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: monospace;
+        }
+        .console {
+            background: #000;
+            color: #0f0;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="console">
+        <h3 style="color: #0f0;">Serial Port Check (Simulated)</h3>
+        <p>Open browser console (F12) to see simulated serial port list</p>
+        <p>In Processing, this would show actual available ports</p>
+        <p>In web browsers, use Web Serial API for real serial communication</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://unpkg.com/@gohai/p5.webserial@^1/libraries/p5.webserial.js"></script>
+    <script src="check_serial.js"></script>
+</body>
+</html>
