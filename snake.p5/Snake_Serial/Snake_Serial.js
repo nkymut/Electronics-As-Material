@@ -284,7 +284,7 @@ function keyPressed() {
 
 function connectSerial() {
   if (!port.opened()) {
-    port.open('Arduino', 9600);
+    port.open(9600);
     document.getElementById('connectBtn').textContent = 'Disconnect';
     console.log("Attempting to connect to Arduino...");
   }
