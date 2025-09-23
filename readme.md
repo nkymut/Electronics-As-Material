@@ -151,7 +151,7 @@ For more information on voltage dividers, refer to this [Sparkfun article](https
 
 Pressure sensors translate force on the material into an electrical signal that a microcontroller can detect. In this example, we use velostat (anti-static plastic film) and its variable electrical resistance when pressed as a sensor.
 
-![making a velostat pressure sensor](img/pressureMake.png)
+![making a velostat pressure sensor](img/pressureMake2.png)
 
 The diagram above illustrates how to make a pressure sensor with velostat, copper tape, and a few other materials. NOTE: the parallel copper tape traces should be close to each other but **not** touching. Ensure that the non-sticky side is in contact with the velostat.
 
