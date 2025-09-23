@@ -115,6 +115,9 @@ Use the following [example code](https://app.arduino.cc/sketches/c368d376-5edb-4
 <br>
 <br>
 
+<details>
+<summary>Bend Sensor to be Updated </summary>
+
 ## <a id="bend">Bend Sensor</a>
 
 Bend sensors translate a physical bending deformation into an electrical signal that a microcontroller can detect. In this example, we use carbon-coated paper and its variable electrical resistance during bending as a sensor.
@@ -146,6 +149,7 @@ For more information on voltage dividers, refer to this [Sparkfun article](https
 <br>
 <br>
 <br>
+</details>
 
 ## <a id="pressure">Pressure Sensor</a>
 
