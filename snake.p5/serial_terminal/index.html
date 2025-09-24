@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serial Terminal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: rgb(200, 200, 200);
+            color: rgb(0, 0, 0);
+        }
+        
+        #terminal {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(200, 200, 200);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .terminal-line {
+            margin-bottom: 2px;
+        }
+        
+        .timestamp {
+            color: rgb(100, 100, 100);
+            margin-right: 10px;
+        }
+        
+        .data {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+        
+        #connectBtn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 1000;
+            font-family: 'Courier New', monospace;
+        }
+        
+        #connectBtn:hover {
+            background-color: #45a049;
+        }
+        
+        #controls {
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            z-index: 1000;
+        }
+        
+        .control-btn {
+            padding: 8px 16px;
+            font-size: 12px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 5px;
+            display: block;
+            width: 100px;
+        }
+        
+        #clearBtn {
+            background-color: rgb(100, 100, 100);
+        }
+        
+        #clearBtn:hover {
+            background-color: rgb(80, 80, 80);
+        }
+        
+        #status {
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <button id="connectBtn">Connect Serial</button>
+    <div id="controls">
+        <button class="control-btn" id="clearBtn">Clear</button>
+        <div id="status">Disconnected</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://unpkg.com/@gohai/p5.webserial@^1/libraries/p5.webserial.js"></script>
+    <script src="serial_terminal.js"></script>
+</body>
+</html>
