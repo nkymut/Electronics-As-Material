@@ -41,7 +41,7 @@ This P5.js sketch listens for commands coming over the serial port connected to 
 
 First, click the "Connect Serial" button to connect to the Arduino.
 
-![Select Serial Port](img/connectSerial.png)
+![Select Serial Port](../img/connectSerial.png)
 
 The pop-up window will show the list of available serial ports. Select the port that corresponds to the Arduino. 
 
