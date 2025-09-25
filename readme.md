@@ -1,4 +1,4 @@
-# Electronics As Material
+# Electronics As Material ver.2 (p5.js version)
 
 Class materials for the Electronics As Material section in Design Fundamentals (NUS DID Year 1). 
 
