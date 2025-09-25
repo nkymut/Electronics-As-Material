@@ -4,12 +4,17 @@
 let port;
 let terminal;
 let maxLines = 1000; // Maximum number of lines to keep in terminal
+let connectBtn;
+let clearBtn;
 
 function setup() {
     console.log("Serial Terminal - p5.webserial library loaded");
     
     port = createSerial();
     terminal = document.getElementById('terminal');
+    
+    // Create p5.js buttons
+    createButtons();
     
     // Try to auto-connect to previously used ports
     let usedPorts = usedSerialPorts();
@@ -20,7 +25,7 @@ function setup() {
         // Check auto-connection status
         let checkAutoConnection = setInterval(() => {
             if (port.opened()) {
-                document.getElementById('connectBtn').textContent = 'Disconnect';
+                connectBtn.html('Disconnect');
                 document.getElementById('status').textContent = 'Connected';
                 addToTerminal('=== AUTO-CONNECTED TO PREVIOUS PORT ===', true);
                 clearInterval(checkAutoConnection);
@@ -36,11 +41,62 @@ function setup() {
         }, 3000);
     }
     
-    // Setup event handlers
-    setupEventHandlers();
-    
     // No canvas needed for terminal
     noCanvas();
+}
+
+function createButtons() {
+    // Create connect button
+    connectBtn = createButton('Connect Serial');
+    connectBtn.position(windowWidth - 130, 10);
+    connectBtn.style('padding', '10px 20px');
+    connectBtn.style('font-size', '14px');
+    connectBtn.style('background-color', '#4CAF50');
+    connectBtn.style('color', 'white');
+    connectBtn.style('border', 'none');
+    connectBtn.style('border-radius', '4px');
+    connectBtn.style('cursor', 'pointer');
+    connectBtn.style('z-index', '1000');
+    connectBtn.style('font-family', '"Courier New", monospace');
+    connectBtn.style('position', 'fixed');
+    
+    // Add hover effect
+    connectBtn.mouseOver(() => {
+        connectBtn.style('background-color', '#45a049');
+    });
+    connectBtn.mouseOut(() => {
+        if (connectBtn.html() === 'Connect Serial') {
+            connectBtn.style('background-color', '#4CAF50');
+        } else {
+            connectBtn.style('background-color', '#4CAF50');
+        }
+    });
+    
+    // Create clear button
+    clearBtn = createButton('Clear');
+    clearBtn.position(windowWidth - 110, 60);
+    clearBtn.style('padding', '8px 16px');
+    clearBtn.style('font-size', '12px');
+    clearBtn.style('color', 'white');
+    clearBtn.style('border', 'none');
+    clearBtn.style('border-radius', '4px');
+    clearBtn.style('cursor', 'pointer');
+    clearBtn.style('font-family', '"Courier New", monospace');
+    clearBtn.style('background-color', 'rgb(100, 100, 100)');
+    clearBtn.style('width', '100px');
+    clearBtn.style('position', 'fixed');
+    clearBtn.style('z-index', '1000');
+    
+    // Add hover effect
+    clearBtn.mouseOver(() => {
+        clearBtn.style('background-color', 'rgb(80, 80, 80)');
+    });
+    clearBtn.mouseOut(() => {
+        clearBtn.style('background-color', 'rgb(100, 100, 100)');
+    });
+    
+    // Setup event handlers
+    setupEventHandlers();
 }
 
 function draw() {
@@ -49,18 +105,18 @@ function draw() {
 
 function setupEventHandlers() {
     // Connect button
-    document.getElementById('connectBtn').onclick = () => {
+    connectBtn.mousePressed(() => {
         if (port.opened()) {
             disconnectSerial();
         } else {
             connectSerial();
         }
-    };
+    });
     
     // Clear button
-    document.getElementById('clearBtn').onclick = () => {
+    clearBtn.mousePressed(() => {
         clearTerminal();
-    };
+    });
 }
 
 function connectSerial() {
@@ -74,7 +130,7 @@ function connectSerial() {
             // Check connection status periodically
             let checkConnection = setInterval(() => {
                 if (port.opened()) {
-                    document.getElementById('connectBtn').textContent = 'Disconnect';
+                    connectBtn.html('Disconnect');
                     document.getElementById('status').textContent = 'Connected';
                     addToTerminal('=== SERIAL CONNECTION ESTABLISHED ===', true);
                     clearInterval(checkConnection);
@@ -100,7 +156,7 @@ function disconnectSerial() {
     if (port.opened()) {
         try {
             port.close();
-            document.getElementById('connectBtn').textContent = 'Connect Serial';
+            connectBtn.html('Connect Serial');
             document.getElementById('status').textContent = 'Disconnected';
             addToTerminal('=== SERIAL CONNECTION CLOSED ===', true);
             console.log("Serial port disconnected");
@@ -148,6 +204,16 @@ function addToTerminal(data, isSystemMessage = false) {
 function clearTerminal() {
     terminal.innerHTML = '';
     addToTerminal('=== TERMINAL CLEARED ===', true);
+}
+
+// Handle window resize to reposition buttons
+function windowResized() {
+    if (connectBtn) {
+        connectBtn.position(windowWidth - 130, 10);
+    }
+    if (clearBtn) {
+        clearBtn.position(windowWidth - 110, 60);
+    }
 }
 
 // Keyboard shortcuts
