@@ -164,10 +164,10 @@ Bend sensors translate a physical bending deformation into an electrical signal 
 ![Bend Sensor Make](img/BendSensor.png)
 
  
+## <a id="bend">Bend Sensor with Carbon-Coated Paper</a>
+
 <details markdown="1">
 <summary>Bend Sensor with Carbon-Coated Paper</summary>
-
-## <a id="bend2">Bend Sensor with Carbon-Coated Paper</a>
 
  Alternatively, you can use carbon-coated paper from [PASCO](https://www.pasco.com/products/lab-apparatus/electricity-and-magnetism/electrostatics-and-electric-fields/pk-9026). This paper has a thin layer of carbon paint on top of a kraft paper backing. The carbon layer is resistive (as in, poorly conductive). Carbon-coated paper can be seen as a two-dimensional resistor, where the electrical resistance between two points on the paper increases as the distance between the two points increases (see chart below).
 
