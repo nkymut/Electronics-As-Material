@@ -115,42 +115,6 @@ Use the following [example code](https://app.arduino.cc/sketches/c368d376-5edb-4
 <br>
 <br>
 
-<details>
-<summary>Bend Sensor to be Updated </summary>
-
-## <a id="bend">Bend Sensor</a>
-
-Bend sensors translate a physical bending deformation into an electrical signal that a microcontroller can detect. In this example, we use carbon-coated paper and its variable electrical resistance during bending as a sensor.
-
-Specifically, we will use carbon-coated paper from [PASCO](https://www.pasco.com/products/lab-apparatus/electricity-and-magnetism/electrostatics-and-electric-fields/pk-9026). This paper has a thin layer of carbon paint on top of a kraft paper backing. The carbon layer is resistive (as in, poorly conductive). Carbon-coated paper can be seen as a two-dimensional resistor, where the electrical resistance between two points on the paper increases as the distance between the two points increases (see chart below).
-
-![carbon-coated paper material composition](img/carbonresistancelength.png)
-
-![carbon-coated paper material composition](img/bendMaterial.png)
-
-The diagram above illustrated the bilayer composition of carbon-coated paper. When the paper is bent inwards (towards the carbon layer), the carbon particles pack closer together, and electrical resistance decreases (it becomes "more" conductive). When the paper is bent outwards (away from the carbon layer), the carbon particles stretch apart, and electrical resistance increases.
-
-How does a microcontroller read electrical resistance? Microcontrollers are able to read changes in logic levels (that is "voltages"). We can therefore use the proportional relationship between Voltage and Resistance to measure the changing electrical resistance of a material. This technique is generally known as resistive sensing.
-
-Ohm's Law: `V = IR` `(Voltage = Current * Resistance)`
-
-![carbon-coated paper material wiring](img/bendWiring.png)
-
-To detect the resistance change when bending carbon-coated paper we will use the circuit illustrated above. A strip of carbon-coated paper is divided into two regions: a fixed region which does not deform, and a region that is bent. We will also use an analog pin and `analogRead` to read the change in levels detected by pin `A0` (as compared to using a digital pin and `digitalRead` which will only give us a binary response).
-
-![voltage divider](img/bendScheme.png)
-
-This circuit is essentially a voltage divider circuit, as illustrated with the schematic above. A voltage divider compares the resistance of a variable resistor (e.g. the carbon-paper strip as it bends) with the resistance of a dixed resistor (e.g. the static carbon-coated paper region). When the resistance of the variable resistor increases, the level between the two resistors decreases; when the resistance of the variable resistor decreases, the level between the two resistors increases. This is measured through the microcontroller and presented as a value based on the ADC resolution (e.g. 10-bits, or from `0-1023` in the case of the Arduino Uno R3).
-
-To read this bend sensor circuit, we will use the following [code example](code/analogRead).
-
-For more information on voltage dividers, refer to this [Sparkfun article](https://learn.sparkfun.com/tutorials/voltage-dividers/all).
-
-<br>
-<br>
-<br>
-</details>
-
 ## <a id="pressure">Pressure Sensor</a>
 
 Pressure sensors translate force on the material into an electrical signal that a microcontroller can detect. In this example, we use velostat (anti-static plastic film) and its variable electrical resistance when pressed as a sensor.
@@ -159,15 +123,69 @@ Pressure sensors translate force on the material into an electrical signal that 
 
 The diagram above illustrates how to make a pressure sensor with velostat, copper tape, and a few other materials. NOTE: the parallel copper tape traces should be close to each other but **not** touching. Ensure that the non-sticky side is in contact with the velostat.
 
+![carbon-coated paper material composition](img/carbonresistancelength.png)
+
+![carbon-coated paper material composition](img/PressureSensor.png)
+
+Velostat is a conductive plastic film made from carbon-filled polyethylene. When pressure is applied to the layers of velostats, the material are compressed closer together, causing the electrical resistance to decrease (it becomes more conductive). When the pressure is released, the velostat layers return to their original spacing, and the electrical resistance increases back to its baseline level. 
+
+How does a microcontroller read electrical resistance? Microcontrollers are able to read changes in logic levels (that is "voltages"). We can therefore use the proportional relationship between Voltage and Resistance to measure the changing electrical resistance of a material. This technique is generally known as resistive sensing.
+
+Ohm's Law: `V = IR` `(Voltage = Current * Resistance)`
+
+<!-- ![carbon-coated paper material wiring](img/bendWiring.png) -->
 ![wiring pressure sensor](img/pressureWiring.png)
 
-Like the bend sensor, we will use a voltage divider circuit to read the pressure sensor, following the wiring diagram above. In this diagram, a 10kOhm resistor is used as the fixed resistor to compare with the resistance of the pressure sensor. However, this resistor value can be adjusted to optimize the range of readings that the microcontroller reads. Use [this tool](https://clementzheng.github.io/volt/) to calculate the optimum fixed resistor value to use. 
+To detect the resistance change when pressing velostat layers we will use the circuit illustrated above. In this diagram, a 10kOhm resistor is used as the fixed resistor to compare with the resistance of the pressure sensor.
 
-To read this pressure sensor circuit, we will use the following [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+![voltage divider](img/bendScheme.png)
+
+This circuit is essentially a voltage divider circuit, as illustrated with the schematic above. A voltage divider compares the resistance of a variable resistor (e.g. the velostat layers) with the resistance of a fixed resistor (e.g. 10K Ohm resistor). When the resistance of the variable resistor increases, the level between the two resistors decreases; when the resistance of the variable resistor decreases, the level between the two resistors increases. This is measured through the microcontroller and presented as a value based on the ADC resolution (e.g. 10-bits, or from `0-1023` in the case of the Arduino Uno R3).
+
+The 10KOhm fixed resistor value can be adjusted to optimize the range of readings that the microcontroller reads. Use [this tool](https://clementzheng.github.io/volt/) to calculate the optimum fixed resistor value to use. 
+
+For more information on voltage dividers, refer to this [Sparkfun article](https://learn.sparkfun.com/tutorials/voltage-dividers/all).
+
+
+To read this pressure sensor circuit
+we will use an analog pin and `analogRead` to read the change in levels detected by pin `A0` (as compared to using a digital pin and `digitalRead` which will only give us a binary response). we will use the following [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+
 
 <br>
 <br>
 <br>
+
+
+## <a id="bend">Bend Sensor</a>
+
+Bend sensors translate a physical bending deformation into an electrical signal that a microcontroller can detect. We will adapt the velostat pressure sensor to a bend sensor by using strips of velostat and a masking tape [DIY-Bend-Sensor](https://www.instructables.com/DIY-Bend-Sensor-Using-only-Velostat-and-Masking-T/).
+. 
+
+![Bend Sensor Make](img/BendSensor.png)
+
+ 
+<details markdown="1">
+<summary>Bend Sensor with Carbon-Coated Paper</summary>
+
+## <a id="bend2">Bend Sensor with Carbon-Coated Paper</a>
+
+ Alternatively, you can use carbon-coated paper from [PASCO](https://www.pasco.com/products/lab-apparatus/electricity-and-magnetism/electrostatics-and-electric-fields/pk-9026). This paper has a thin layer of carbon paint on top of a kraft paper backing. The carbon layer is resistive (as in, poorly conductive). Carbon-coated paper can be seen as a two-dimensional resistor, where the electrical resistance between two points on the paper increases as the distance between the two points increases (see chart below).
+
+![Carbon-coated paper material composition](img/bendMaterial.png)
+
+The diagram above illustrated the bilayer composition of carbon-coated paper. When the paper is bent inwards (towards the carbon layer), the carbon particles pack closer together, and electrical resistance decreases (it becomes "more" conductive). When the paper is bent outwards (away from the carbon layer), the carbon particles stretch apart, and electrical resistance increases.
+
+![Carbon-coated paper wiring](img/bendWiring.png)
+
+
+To detect the resistance change when bending carbon-coated paper we will use the circuit illustrated above. A strip of carbon-coated paper is divided into two regions: a fixed region which does not deform, and a region that is bent. We will also use an analog pin and `analogRead` to read the change in levels detected by pin `A0` [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+.
+</details>
+
+<br>
+<br>
+<br>
+
 
 ## <a id="touch">Touch Sensor</a>
 
