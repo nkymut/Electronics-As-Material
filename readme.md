@@ -122,9 +122,8 @@ Pressure sensors translate force on the material into an electrical signal that 
 
 The diagram above illustrates how to make a pressure sensor with velostat, copper tape, and a few other materials. NOTE: the parallel copper tape traces should be close to each other but **not** touching. Ensure that the non-sticky side is in contact with the velostat.
 
-![carbon-coated paper material composition](img/carbonresistancelength.png)
-
-![carbon-coated paper material composition](img/PressureSensor.png)
+<!-- ![carbon-coated paper material composition](img/carbonresistancelength.png) -->
+![PressureSensor Diagram](img/PressureSensor.png)
 
 Velostat is a conductive plastic film made from carbon-filled polyethylene. When pressure is applied to the layers of velostats, the material are compressed closer together, causing the electrical resistance to decrease (it becomes more conductive). When the pressure is released, the velostat layers return to their original spacing, and the electrical resistance increases back to its baseline level. 
 
@@ -132,7 +131,6 @@ How does a microcontroller read electrical resistance? Microcontrollers are able
 
 Ohm's Law: `V = IR` `(Voltage = Current * Resistance)`
 
-<!-- ![carbon-coated paper material wiring](img/bendWiring.png) -->
 ![wiring pressure sensor](img/pressureWiring.png)
 
 To detect the resistance change when pressing velostat layers we will use the circuit illustrated above. In this diagram, a 10kOhm resistor is used as the fixed resistor to compare with the resistance of the pressure sensor.
@@ -177,6 +175,7 @@ we will use an analog pin and `analogRead` to read the change in levels detected
 
  Alternatively, you can use carbon-coated paper from [PASCO](https://www.pasco.com/products/lab-apparatus/electricity-and-magnetism/electrostatics-and-electric-fields/pk-9026). This paper has a thin layer of carbon paint on top of a kraft paper backing. The carbon layer is resistive (as in, poorly conductive). Carbon-coated paper can be seen as a two-dimensional resistor, where the electrical resistance between two points on the paper increases as the distance between the two points increases (see chart below).
 
+![carbon-coated paper material composition](img/carbonresistancelength.png)
 ![Carbon-coated paper material composition](img/bendMaterial.png)
 
 The diagram above illustrated the bilayer composition of carbon-coated paper. When the paper is bent inwards (towards the carbon layer), the carbon particles pack closer together, and electrical resistance decreases (it becomes "more" conductive). When the paper is bent outwards (away from the carbon layer), the carbon particles stretch apart, and electrical resistance increases.
