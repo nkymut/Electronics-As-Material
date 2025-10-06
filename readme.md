@@ -82,7 +82,7 @@ We use the diagram above to create our button circuit.
 
 This circuit follows the following schematic. Essentially, when the button is open, the resistor "pulls down" the digital pin value to `Ground`, and it reads `LOW/0`. (That is why it is called a pull-down resistor.) When the button is closed, the level at the digital pin is `5V` and it reads `HIGH/1`.
 
-Use the following [example code](https://app.arduino.cc/sketches/8a19202f-7618-4c98-a974-431bd04c8f7d?view-mode=preview) to read this circuit. The digital pin used in this example is `7`.
+Use the following [example code [buttonRead]](./code/buttonRead/buttonRead.ino) to read this circuit. The digital pin used in this example is `7`.
 
 
 [Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/8a19202f-7618-4c98-a974-431bd04c8f7d?view-mode=preview)
@@ -103,7 +103,7 @@ To access the internal pull-up resistor on an Arduino Uno R3, we will use the `p
 
 e.g. `pinMode(7, INPUT_PULLUP)`.
 
-Use the following [example code](https://app.arduino.cc/sketches/c368d376-5edb-4db9-a715-c7853ca70dc8?view-mode=preview) to read this circuit. The digital pin used in this example is `7`.
+Use the following [example code [buttonRead_pullup]](./code/buttonRead_pullup/buttonRead_pullup.ino) to read this circuit. The digital pin used in this example is `7`.
 
 
 [Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/c368d376-5edb-4db9-a715-c7853ca70dc8?view-mode=preview)
@@ -147,7 +147,9 @@ For more information on voltage dividers, refer to this [Sparkfun article](https
 
 
 To read this pressure sensor circuit
-we will use an analog pin and `analogRead` to read the change in levels detected by pin `A0` (as compared to using a digital pin and `digitalRead` which will only give us a binary response). we will use the following [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+we will use an analog pin and `analogRead` to read the change in levels detected by pin `A0` (as compared to using a digital pin and `digitalRead` which will only give us a binary response). we will use the following [code example](./code/analogRead/analogRead.ino).
+
+[Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview)
 
 
 <br>
@@ -164,9 +166,9 @@ Bend sensors translate a physical bending deformation into an electrical signal 
 
 
 To read this bend sensor circuit
-we will use an analog pin and `analogRead` to read the change in levels detected by pin `A0` like the pressure sensor [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+we will use an analog pin and `analogRead` to read the change in levels detected by pin `A0` like the pressure sensor [code example [analogRead]](./code/analogRead/analogRead.ino).
 
-
+[Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview)
 
 ## <a id="bend">Bend Sensor with Carbon-Coated Paper</a>
 
@@ -182,8 +184,10 @@ The diagram above illustrated the bilayer composition of carbon-coated paper. Wh
 ![Carbon-coated paper wiring](img/bendWiring.png)
 
 
-To detect the resistance change when bending carbon-coated paper we will use the circuit illustrated above. A strip of carbon-coated paper is divided into two regions: a fixed region which does not deform, and a region that is bent. We will also use an analog pin and `analogRead` to read the change in levels detected by pin `A0` [code example](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview).
+To detect the resistance change when bending carbon-coated paper we will use the circuit illustrated above. A strip of carbon-coated paper is divided into two regions: a fixed region which does not deform, and a region that is bent. We will also use an analog pin and `analogRead` to read the change in levels detected by pin `A0` [code example](./code/analogRead/analogRead.ino).
 .
+
+[Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/83ed3cd5-5079-4331-a8c0-0ef64365a3c7?view-mode=preview)
 </details>
 
 <br>
@@ -203,7 +207,7 @@ Follow the diagram above to build a capacitive touch sensing circuit. Connect a 
 
 **Avoid using pins `0` and `1` for reading capacitive touch sensors as those are also used for Serial communication**
 
-Use the following [example code](https://app.arduino.cc/sketches/64bc9378-c446-4391-9a9d-1a90508344e3?view-mode=preview) for this circuit. In order to upload this code example, you will need to install the CapacitiveSensor library. In the Arduino IDE, go to Sketch > Include Library > Manage Libraries. Search for "CapacitiveSensor" by Paul Bagder, Paul Stoffregen, and install it.
+Use the following [example code [touchSensor]](./code/touchSensor/touchSensor.ino) for this circuit. In order to upload this code example, you will need to install the CapacitiveSensor library. In the Arduino IDE, go to Sketch > Include Library > Manage Libraries. Search for "CapacitiveSensor" by Paul Bagder, Paul Stoffregen, and install it.
 
 
 [Open Example Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/64bc9378-c446-4391-9a9d-1a90508344e3?view-mode=preview)
@@ -226,8 +230,9 @@ In the previous examples, the code examples prints the sensor value every loop. 
 
 Let's look at buttons/sensors that use `digitalRead` first. Since `digitalRead`'s output is either 1 or 0, detecting "push" and "release" events is more straightforward.
 
-[Example code here](https://app.arduino.cc/sketches/5b4dcace-aa51-4988-851d-0f8f71e138c2?view-mode=preview).
+[Example code here](./code/buttonEvent/buttonEvent.ino).
 
+[Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/5b4dcace-aa51-4988-851d-0f8f71e138c2?view-mode=preview)
 
 
 
@@ -253,7 +258,9 @@ As illustrated by the table above, the previous reading is always trailing behin
 
 How about sensors that that give a range of values, such as via `analogRead` or the capacitive touch sensor? In this case, we need to set a threshold that determines when the event has occurred. For example, a pressure sensor is considered "pressed" when its `analogRead` value increases above `523` (just a random value for explanation purposes).  
 
-[Example code here](https://app.arduino.cc/sketches/9fcdfb16-7874-4534-89d2-03e26df5122f?view-mode=preview).
+[Example code here [analogEvent]](./code/analogEvent/analogEvent.ino).
+
+[Open Code on Arduino Cloud IDE](https://app.arduino.cc/sketches/9fcdfb16-7874-4534-89d2-03e26df5122f?view-mode=preview)
 
 | loop number | threshold | current reading | previous reading | event |
 | --- | --- | --- | --- | --- |
