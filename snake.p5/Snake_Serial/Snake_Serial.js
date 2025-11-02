@@ -18,6 +18,9 @@ let snake;
 let apple;
 
 function setup() {
+  // Initialize serial terminal before any console.log calls
+  initializeSerialTerminal();
+
   console.log("p5.webserial library loaded");
 
   port = createSerial();
@@ -38,6 +41,9 @@ function setup() {
 
   // Add connect button
   createConnectButton();
+  
+  // Add terminal toggle button
+  createTerminalToggleButton();
 }
 
 function draw() {
@@ -250,6 +256,10 @@ function keyPressed() {
   // Fullscreen mode
   if (key == 'f' || key == 'F' || key == ' ') {
     toggleFullscreen();
+  }
+  // Toggle terminal with 't' key
+  if (key == 't' || key == 'T') {
+    toggleTerminal();
   }
 
   // Simulate serial commands with number keys
