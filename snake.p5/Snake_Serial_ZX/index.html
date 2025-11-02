@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Serial with Z/X turn</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .controls p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.10/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/@gohai/p5.webserial@^1/libraries/p5.webserial.js"></script>
+    <script src="Terminal.js"></script>
+    <script src="Snake_Serial.js"></script>
+
+    <div class="controls">
+        <h3>Controls</h3>
+        <p><strong>Connect Serial:</strong> Click button to connect to Arduino</p>
+        <p><strong>WASD:</strong> Move snake</p>
+           <p><strong>R:</strong> Reset | <strong>P/O:</strong> Speed up/down</p>
+        <p><strong>F/Space:</strong> Toggle fullscreen</p>
+           <p><strong>Z/X:</strong> Turn left/right</p>
+        <p><strong>1-9:</strong> 1: Up, 2: Left, 3: Down, 4: Right, 5: Reset, 6: Speed down, 7: Speed up, 8: Turn left, 9: Turn right</p>
+   
+        <p><em>Note: WebSerial requires Chrome/Edge browser</em></p>
+    </div>
+</body>
+</html>
