@@ -230,6 +230,46 @@ function speedDown() {
   snake.speedInterval = snake.speedInterval > maxSpeedInterval ? maxSpeedInterval : snake.speedInterval;
 }
 
+function turnLeft() {
+  snake.moving = true;
+  if (snake.dir[0] == 1 && !snake.command && !snake.dead) {
+    snake.dir[0] = 4;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 2 && !snake.command && !snake.dead) {
+    snake.dir[0] = 1;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 3 && !snake.command && !snake.dead) {
+    snake.dir[0] = 2;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 4 && !snake.command && !snake.dead) {
+    snake.dir[0] = 3;
+    snake.command = true;
+  }
+}
+
+function turnRight() {
+  snake.moving = true;
+  if (snake.dir[0] == 1 && !snake.command && !snake.dead) {
+    snake.dir[0] = 2;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 2 && !snake.command && !snake.dead) {
+    snake.dir[0] = 3;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 3 && !snake.command && !snake.dead) {
+    snake.dir[0] = 4;
+    snake.command = true;
+  }
+  else if (snake.dir[0] == 4 && !snake.command && !snake.dead) {
+    snake.dir[0] = 1;
+    snake.command = true;
+  }
+}
+
 function keyPressed() {
   if (key == 'w' || key == 'W') {
     moveUp();
@@ -251,6 +291,12 @@ function keyPressed() {
   }
   if (key == 'o' || key == 'O') {
     speedDown();
+  }
+  if (key == 'z' || key == 'Z') {
+    turnLeft();
+  }
+  if (key == 'x' || key == 'X') {
+    turnRight();
   }
 
   // Fullscreen mode
@@ -283,6 +329,12 @@ function keyPressed() {
   }
   if (key == '7') {
     speedUp();
+  }
+  if (key == '8') {
+    turnLeft();
+  }
+  if (key == '9') {
+    turnRight();
   }
 }
 
@@ -348,6 +400,13 @@ function readSerial() {
           case '7':
             speedUp();
             break;
+          case '8':
+            turnLeft();
+            break;
+          case '9':
+            turnRight();
+            break;
+            
         }
       }
     }

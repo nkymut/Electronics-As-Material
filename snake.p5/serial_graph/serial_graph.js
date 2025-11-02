@@ -1,6 +1,5 @@
 // Serial Graph - displays incoming serial data as real-time graphs
 // Uses the same color scheme as Snake_Serial.js
-// Supports formats: "000\n" or "000,000,000\n"
 
 let port;
 let dataBuffer = [];
